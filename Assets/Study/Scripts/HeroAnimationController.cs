@@ -21,7 +21,7 @@ public class HeroAnimationController : MonoBehaviour
     {
         // HeroSetAnimation();
         DirectionAnimation();
-        behavierAnimation();
+        //behavierAnimation();
     }
 
     void HeroSetAnimation()
@@ -61,25 +61,25 @@ public class HeroAnimationController : MonoBehaviour
         _ani.SetFloat("AxisZ", dirZ * isSprint);
     }
 
-    void behavierAnimation()
-    {
-        float timer = 0;
-        int WaitTime = 5;
-        timer += Time.deltaTime;
+    //void behavierAnimation()
+    //{
+    //    float timer = 0;
+    //    int WaitTime = 5;
+    //    timer += Time.deltaTime;
 
-        if (timer > WaitTime)
-        {
-            _ani.SetLayerWeight(1, 0);
-            Debug.Log("대기시간 초과");
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
+    //    if (timer > WaitTime)
+    //    {
+    //        _ani.SetLayerWeight(1, 0);
+    //        Debug.Log("대기시간 초과");
+    //    }
+    //    if (Input.GetKey(KeyCode.A))
+    //    {
             
-            timer = 0;
-            _ani.SetLayerWeight(1, 1);
+    //        timer = 0;
+    //        _ani.SetLayerWeight(1, 1);
            
-        }
+    //    }
 
-    }
+    //}
 }
 

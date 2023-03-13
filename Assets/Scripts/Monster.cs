@@ -19,6 +19,7 @@ public class Monster : MonoBehaviour
     [SerializeField] GameObject _mon;
     [SerializeField] Transform _target;
     [SerializeField] GameObject _coin;
+    [SerializeField] GameObject _attackSpace;
     //일정 랜덤한 시간 이 지나면 스폰
     EMonState _eState = EMonState.None;
 
@@ -41,10 +42,14 @@ public class Monster : MonoBehaviour
         if (_eState == EMonState.Idle) moveAndSearch();
         if (_eState == EMonState.Attack) followAndAttack();
         if (_eState == EMonState.Die) DieEnd();
+        _attackSpace.SetActive(_eState== EMonState.Attack);
     }
     void followAndAttack()
     {
-        _ani.Play("Attack");
+        if (_ani.GetCurrentAnimatorStateInfo(0).IsName("Hitted") == false || _ani.GetCurrentAnimatorStateInfo(0).normalizedTime >=1)
+        {
+            _ani.Play("Attack");
+        }
         float dis = Vector3.Distance(_target.position, transform.position);
         if(dis > _attackDis)
         {
@@ -79,7 +84,11 @@ public class Monster : MonoBehaviour
         //근처에 영웅이 있나 탐색
         // 있으면 영웅쪽으로 이동하고 공격
         // 없으면 상태를 move 로 바꾼다음에 랜덤한 위치를 정해서 이동
-        _ani.Play("Idle");
+
+        if (_ani.GetCurrentAnimatorStateInfo(0).IsName("Hitted") == false)
+        {
+            _ani.Play("Idle");
+        }
         float dis = Vector3.Distance(_target.position, transform.position);
         if(dis  < _searchDis) // 영웅 찾았을때
         {
@@ -146,6 +155,7 @@ public class Monster : MonoBehaviour
 
     public void hitted()
     {
+        if (!canHitted) return;
         _hp--;
         if(_hp <=0)
         {
@@ -156,15 +166,40 @@ public class Monster : MonoBehaviour
         {
             _ani.Play("Hitted");
         }
+        canHitted= false;
+        StartCoroutine(CoHittedCoolTime());
 
     }
 
+    bool canHitted = true;
+
+    IEnumerator CoHittedCoolTime()
+    {
+        yield return new WaitForSeconds(1f);
+        canHitted = true;
+    }
     public void DieEnd()
     {
         Debug.Log("die");
         gameObject.SetActive(false);
         GameObject tmp = Instantiate(_coin);
         tmp.transform.position= transform.position; 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Hero"))
+        {
+            other.GetComponent<HeroMove>().hitted();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Hero"))
+        {
+            other.GetComponent<HeroMove>().hitted();
+        }
     }
 
 }

@@ -6,9 +6,13 @@ using UnityEngine;
 public class BlueCoin : MonoBehaviour
 {
     [SerializeField] GameObject bludeCoinParent;
-    public int GetCoin()
+
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(bludeCoinParent);   
-        return 1;
+        if(other.CompareTag("Hero"))
+        {
+            other.GetComponent<HeroMove>().AddCoin();
+            Destroy(bludeCoinParent);
+        }
     }
 }

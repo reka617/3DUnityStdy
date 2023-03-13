@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Slime
+  - Hero
   layers:
   - Default
   - TransparentFX
