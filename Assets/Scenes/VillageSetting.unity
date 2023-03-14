@@ -7531,7 +7531,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 3
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 50, y: 50}
@@ -8706,6 +8706,12 @@ MonoBehaviour:
   _target: {fileID: 1470676887}
   _coin: {fileID: 7012957665720499481, guid: 610bfd777615dd549ac58fac2344ac7a, type: 3}
   _attackSpace: {fileID: 1712781812}
+  _coins:
+  - {fileID: 21300000, guid: b10140034b24e604f8d1c68552a2eb38, type: 3}
+  - {fileID: 21300000, guid: d16eb4a5e4c8e1f4fa75c082fe1d2eb7, type: 3}
+  - {fileID: 21300000, guid: 67e2df2cf53666b4fb42a802b0e7a060, type: 3}
+  - {fileID: 21300000, guid: 5de16f88168635841aabd9576d916cd4, type: 3}
+  - {fileID: 21300000, guid: b8ec0eb182f2c4441b88b51c6cddbba5, type: 3}
 --- !u!1001 &1876524121
 PrefabInstance:
   m_ObjectHideFlags: 0

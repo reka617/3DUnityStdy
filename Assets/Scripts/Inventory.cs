@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject _itemPreb;
 
     List<Item> lstitems = new List<Item>();
+    Item _item = new Item();
 
     public void OpenOrClose()
     {
@@ -43,6 +44,12 @@ public class Inventory : MonoBehaviour
         lstitems.Add(_item);
         GameObject temp = Instantiate(_itemPreb, _content);
         temp.GetComponent<ItemUI>().Init(_item);
+    }
+
+    public void getDropItemData(GameObject Object)
+    {
+        
+        _item._sprite = Object.GetComponent<SpriteRenderer>().sprite;
     }
 
 }

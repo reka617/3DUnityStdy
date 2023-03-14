@@ -20,6 +20,10 @@ public class Monster : MonoBehaviour
     [SerializeField] Transform _target;
     [SerializeField] GameObject _coin;
     [SerializeField] GameObject _attackSpace;
+    [SerializeField] Sprite[] _coins;
+    [SerializeField] Inventory _inven;
+
+
     //일정 랜덤한 시간 이 지나면 스폰
     EMonState _eState = EMonState.None;
 
@@ -29,7 +33,7 @@ public class Monster : MonoBehaviour
     float _attackDis = 2;
     float _speed = 2;
 
-    int _hp =5;
+    int _hp =1;
 
     // Start is called before the first frame update
     void Start()
@@ -183,7 +187,9 @@ public class Monster : MonoBehaviour
         Debug.Log("die");
         gameObject.SetActive(false);
         GameObject tmp = Instantiate(_coin);
-        tmp.transform.position= transform.position; 
+        tmp.GetComponentInChildren<SpriteRenderer>().sprite = _coins[Random.Range(0,4)];
+        tmp.transform.position= transform.position;
+        _inven.getDropItemData(tmp);
     }
 
     private void OnTriggerEnter(Collider other)
