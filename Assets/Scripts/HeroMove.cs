@@ -7,10 +7,10 @@ public class HeroMove : MonoBehaviour
     [SerializeField] GameObject _gameObjectUI;
     [SerializeField] Collider _sword;
     [SerializeField] Transform _cam;
+    [SerializeField] Inventory _inven;
     Animator _ani;
 
     public int HP = 5;
-    int _coin = 0;
 
     private void Awake()
     {
@@ -44,10 +44,8 @@ public class HeroMove : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             _sword.enabled = true;
-            _ani.SetLayerWeight(1, 0.5f);
             _ani.SetTrigger("isAttack");
-        }
-        else _ani.SetLayerWeight(1, 0.5f);  
+        } 
             
 
         GetComponent<Rigidbody>().velocity = vYz;
@@ -64,15 +62,13 @@ public class HeroMove : MonoBehaviour
         if (HP <= 0)
         {
             _gameObjectUI.SetActive(true);
-            _ani.Play("Die");
+            _ani.SetTrigger("isDie");
             Time.timeScale = 0;
 
         }
         else
         {
-            _ani.SetLayerWeight(2, 1);
             _ani.SetTrigger("isHitted");
-            _ani.SetLayerWeight(2, 0);
         }
         canHitted = false;
         StartCoroutine(CoHittedCoolTime());
@@ -97,6 +93,11 @@ public class HeroMove : MonoBehaviour
     
     public void AddCoin()
     {
-        _coin++;
+        Item item = new Item();
+        int count = Random.Range(1, 100);
+        EItemType eType = (EItemType)Random.Range(1, (int)EItemType.Max - 1);
+        item._eType = eType;
+        item._coinCount = count;
+        _inven.AddItem(item);
     }
 }

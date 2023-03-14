@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7012957665720499481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -119.29024, y: -4.818403, z: 34.794548}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53,6 +53,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6263124849401936958}
     m_Modifications:
+    - target: {fileID: 930367783521852238, guid: f7803fd3d9a410a40a505bbfa65fdba3, type: 3}
+      propertyPath: blueCoinParent
+      value: 
+      objectReference: {fileID: 7012957665720499481}
     - target: {fileID: 1025390965230780090, guid: f7803fd3d9a410a40a505bbfa65fdba3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -63,7 +67,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1025390965230780090, guid: f7803fd3d9a410a40a505bbfa65fdba3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1025390965230780090, guid: f7803fd3d9a410a40a505bbfa65fdba3, type: 3}
       propertyPath: m_LocalPosition.z

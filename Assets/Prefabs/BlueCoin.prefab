@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bcafe37afe6b001419531fb36bdfb965, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b10140034b24e604f8d1c68552a2eb38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,7 +115,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025390965230780095}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.2, z: 0.2}
@@ -132,4 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96ea9ad623b25e418adc5d0773cd23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bludeCoinParent: {fileID: 7012957665720499481, guid: 610bfd777615dd549ac58fac2344ac7a, type: 3}
+  blueCoinParent: {fileID: 7012957665720499481, guid: 610bfd777615dd549ac58fac2344ac7a, type: 3}

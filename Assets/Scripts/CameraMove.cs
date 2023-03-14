@@ -25,6 +25,8 @@ public class CameraMove : MonoBehaviour
     Vector3 dirNormal;
     float finalDis;
 
+    bool _isMouseVisible = false;
+
     
 
   
@@ -35,13 +37,26 @@ public class CameraMove : MonoBehaviour
 
         dirNormal = _realCam.localPosition.normalized;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+      
+
+        }
 
     
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            _isMouseVisible = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            _isMouseVisible = true;
+        }
+        if (_isMouseVisible) return;
         rotX += Input.GetAxis("Mouse Y") * -1 * sensitivity * Time.deltaTime;
         rotY += Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
 
@@ -50,6 +65,8 @@ public class CameraMove : MonoBehaviour
         Quaternion rot = Quaternion.Euler(rotX, rotY, 0);
         transform.rotation = rot;
         //transform.position = _follwer.position;
+
+       
     }
 
     private void LateUpdate()
@@ -70,4 +87,7 @@ public class CameraMove : MonoBehaviour
 
         _realCam.localPosition = Vector3.Lerp(_realCam.localPosition, dirNormal * finalDis, Time.deltaTime * Smoothness);
     }
+
+    
+
 }
